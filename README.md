@@ -78,7 +78,7 @@ firmware/
 - Enable hotspot on your phone
 - Both ESP32 devices connect to it
 - The app connects to `rover.local` and `cam.local` via mDNS
-- If mDNS fails, set manual IPs in the app's Config screen
+- If mDNS fails, use a network scanner app (like Fing) to find the ESP32 IPs and enter them manually in the app's Config screen
 
 ---
 
