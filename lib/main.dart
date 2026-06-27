@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:rover_companion/engines/state_manager.dart';
 import 'package:rover_companion/models/app_config.dart';
+import 'package:rover_companion/ui/screens/manual_control_screen.dart';
 import 'package:rover_companion/ui/screens/splash_screen.dart';
 import 'package:rover_companion/ui/screens/face_screen.dart';
 import 'package:rover_companion/ui/screens/control_screen.dart';
@@ -64,6 +65,7 @@ class RoverApp extends StatelessWidget {
         '/home': (_) => const FaceScreen(),
         '/control': (_) => const ControlScreen(),
         '/settings': (_) => const SettingsScreen(),
+        '/manual': (_) => const ManualControlScreen(),
       },
     );
   }
