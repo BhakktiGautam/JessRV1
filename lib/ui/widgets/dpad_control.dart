@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:rover_companion/models/rover_state.dart';
-
+import 'dart:async';
 class DPadControl extends StatefulWidget {
   final ValueChanged<MoveDirection> onCommand;
   final bool enabled;
@@ -19,15 +19,29 @@ class DPadControl extends StatefulWidget {
 
 class _DPadControlState extends State<DPadControl> {
   MoveDirection? _pressed;
+  Timer? _holdTimer;
 
   void _press(MoveDirection dir) {
     setState(() => _pressed = dir);
     widget.onCommand(dir);
+
+    _holdTimer?.cancel();
+    _holdTimer = Timer.periodic(const Duration(milliseconds: 100), (_) {
+      widget.onCommand(dir);
+    });
   }
 
   void _release() {
+    _holdTimer?.cancel();
+    _holdTimer = null;
     setState(() => _pressed = null);
     widget.onCommand(MoveDirection.stop);
+  }
+
+  @override
+  void dispose() {
+    _holdTimer?.cancel();
+    super.dispose();
   }
 
   @override
