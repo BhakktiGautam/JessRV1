@@ -166,7 +166,10 @@ class _ModeSelector extends StatelessWidget {
           label: 'MANUAL',
           active: sm.mainState == MainState.manual,
           color: const Color(0xFFFFAA00),
-          onTap: sm.setManualMode,
+          onTap: (){
+            sm.setManualMode();
+            Navigator.pushNamed(context, '/manual');
+        }
         ),
         const SizedBox(width: 12),
         _ModeChip(

@@ -177,7 +177,7 @@ class StateManager extends ChangeNotifier {
     _watchdogTimer?.cancel();
     _watchdogTimer = Timer.periodic(const Duration(seconds: 3), (_) async {
       isConnected = await _commandService.ping();
-      if (!isConnected && mainState != MainState.error) {
+      if (!isConnected && mainState != MainState.error && mainState != MainState.manual) {
         _setMainState(MainState.error);
         statusMessage = 'Connection lost';
       }
